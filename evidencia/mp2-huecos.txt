@@ -1,0 +1,130 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.academia:cuenta-bancaria-junit >-----------------
+[INFO] Building cuenta-bancaria-junit 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ cuenta-bancaria-junit ---
+[INFO] skip non existing resourceDirectory /home/lenovo/cuenta-bancaria-junit/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ cuenta-bancaria-junit ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ cuenta-bancaria-junit ---
+[INFO] skip non existing resourceDirectory /home/lenovo/cuenta-bancaria-junit/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ cuenta-bancaria-junit ---
+[INFO] Recompiling the module because of added or removed source files.
+[INFO] Compiling 2 source files with javac [debug release 17] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ cuenta-bancaria-junit ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] +--com.academia.banco.DepositoTest - 0.054 s
+[INFO] |  +-- [OK] depositarSumaAlSaldo - 0.031 s
+[INFO] |  '-- [OK] unaCuentaNuevaEmpiezaEnCero - 0.001 s
+[INFO] +--com.academia.banco.RetiroTest - 0.050 s
+[INFO] |  +-- [XX] unMontoConFraccionDeCentavoSeRechaza - 0.011 s
+[INFO] |  +-- [OK] retirarCeroSeRechaza - 0.010 s
+[INFO] |  +-- [OK] retirarRestaDelSaldo - 0.001 s
+[INFO] |  +-- [XX] sinSaldoSuficienteSeRechazaYNoCambiaNada - 0.011 s
+[INFO] |  +-- [XX] retirarExactamenteElLimiteSePermite - 0.002 s
+[INFO] |  +-- [XX] retirarUnCentavoMasDelLimiteSeRechaza - 0.001 s
+[INFO] |  +-- [XX] retirarUnMontoNegativoSeRechaza - 0.001 s
+[INFO] |  '-- [XX] elMensajeDiceCuantoTienesYCuantoNecesitas - 0.001 s
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   RetiroTest.elMensajeDiceCuantoTienesYCuantoNecesitas:71 HUECO 3 sin completar
+[ERROR]   RetiroTest.retirarExactamenteElLimiteSePermite:81 HUECO 4 sin completar
+[ERROR]   RetiroTest.retirarUnCentavoMasDelLimiteSeRechaza:92 HUECO 5 sin completar
+[ERROR]   RetiroTest.retirarUnMontoNegativoSeRechaza:42 HUECO 1 sin completar
+[ERROR]   RetiroTest.sinSaldoSuficienteSeRechazaYNoCambiaNada:58 HUECO 2 sin completar
+[ERROR]   RetiroTest.unMontoConFraccionDeCentavoSeRechaza:99 HUECO 6 sin completar
+[INFO] 
+[ERROR] Tests run: 10, Failures: 6, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.026 s
+[INFO] Finished at: 2026-09-30T13:06:12-06:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.6:test (default-test) on project cuenta-bancaria-junit: There are test failures.
+[ERROR] 
+[ERROR] See /home/lenovo/cuenta-bancaria-junit/target/surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+===== DETALLE de cada clase con fallas (target/surefire-reports) =====
+-------------------------------------------------------------------------------
+Test set: com.academia.banco.RetiroTest
+-------------------------------------------------------------------------------
+Tests run: 8, Failures: 6, Errors: 0, Skipped: 0, Time elapsed: 0.050 s <<< FAILURE! -- in com.academia.banco.RetiroTest
+com.academia.banco.RetiroTest.unMontoConFraccionDeCentavoSeRechaza -- Time elapsed: 0.011 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: HUECO 6 sin completar
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:38)
+	at org.junit.jupiter.api.Assertions.fail(Assertions.java:138)
+	at com.academia.banco.RetiroTest.unMontoConFraccionDeCentavoSeRechaza(RetiroTest.java:99)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.academia.banco.RetiroTest.retirarCeroSeRechaza -- Time elapsed: 0.010 s
+com.academia.banco.RetiroTest.retirarRestaDelSaldo -- Time elapsed: 0.001 s
+com.academia.banco.RetiroTest.sinSaldoSuficienteSeRechazaYNoCambiaNada -- Time elapsed: 0.011 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: HUECO 2 sin completar
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:38)
+	at org.junit.jupiter.api.Assertions.fail(Assertions.java:138)
+	at com.academia.banco.RetiroTest.sinSaldoSuficienteSeRechazaYNoCambiaNada(RetiroTest.java:58)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.academia.banco.RetiroTest.retirarExactamenteElLimiteSePermite -- Time elapsed: 0.002 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: HUECO 4 sin completar
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:38)
+	at org.junit.jupiter.api.Assertions.fail(Assertions.java:138)
+	at com.academia.banco.RetiroTest.retirarExactamenteElLimiteSePermite(RetiroTest.java:81)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.academia.banco.RetiroTest.retirarUnCentavoMasDelLimiteSeRechaza -- Time elapsed: 0.001 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: HUECO 5 sin completar
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:38)
+	at org.junit.jupiter.api.Assertions.fail(Assertions.java:138)
+	at com.academia.banco.RetiroTest.retirarUnCentavoMasDelLimiteSeRechaza(RetiroTest.java:92)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.academia.banco.RetiroTest.retirarUnMontoNegativoSeRechaza -- Time elapsed: 0.001 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: HUECO 1 sin completar
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:38)
+	at org.junit.jupiter.api.Assertions.fail(Assertions.java:138)
+	at com.academia.banco.RetiroTest.retirarUnMontoNegativoSeRechaza(RetiroTest.java:42)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.academia.banco.RetiroTest.elMensajeDiceCuantoTienesYCuantoNecesitas -- Time elapsed: 0.001 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: HUECO 3 sin completar
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:38)
+	at org.junit.jupiter.api.Assertions.fail(Assertions.java:138)
+	at com.academia.banco.RetiroTest.elMensajeDiceCuantoTienesYCuantoNecesitas(RetiroTest.java:71)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
