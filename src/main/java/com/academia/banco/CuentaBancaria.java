@@ -16,6 +16,8 @@ import java.util.List;
  *  6. Transferir no cobra comisión ni cuenta como retiro; si falla, ninguna de las dos cuentas cambia.
  *  7. Cada operación queda en el historial de movimientos (la comisión, como movimiento aparte).
  *     El historial se puede leer pero no modificar desde fuera.
+ *  8. Una cuenta se puede cerrar solo si su saldo es $0.00. Una cuenta cerrada no admite depósitos,
+ *     retiros ni transferencias (ni recibir transferencias) y no se puede volver a cerrar.
  */
 public class CuentaBancaria {
 
@@ -26,6 +28,7 @@ public class CuentaBancaria {
     private final String titular;
     private BigDecimal saldo = new BigDecimal("0.00");
     private int retiros = 0;
+    private boolean cerrada = false;
     private final List<Movimiento> movimientos = new ArrayList<>();
 
     public CuentaBancaria(String titular) {
@@ -36,12 +39,14 @@ public class CuentaBancaria {
     }
 
     public void depositar(BigDecimal monto) {
+        validarAbierta();
         BigDecimal m = validarMonto(monto);
         saldo = saldo.add(m);
         movimientos.add(new Movimiento(TipoMovimiento.DEPOSITO, m));
     }
 
     public void retirar(BigDecimal monto) {
+        validarAbierta();
         BigDecimal m = validarMonto(monto);
         if (m.compareTo(LIMITE_POR_RETIRO) > 0) {
             throw new LimiteExcedidoException(m, LIMITE_POR_RETIRO);
@@ -60,11 +65,15 @@ public class CuentaBancaria {
     }
 
     public void transferir(BigDecimal monto, CuentaBancaria destino) {
+        validarAbierta();
         if (destino == null) {
             throw new IllegalArgumentException("La cuenta destino es obligatoria");
         }
         if (destino == this) {
             throw new IllegalArgumentException("No puedes transferirte a la misma cuenta");
+        }
+        if (destino.estaCerrada()) {
+            throw new CuentaCerradaException(destino.titular);
         }
         BigDecimal m = validarMonto(monto);
         if (m.compareTo(saldo) > 0) {
@@ -74,6 +83,14 @@ public class CuentaBancaria {
         destino.saldo = destino.saldo.add(m);
         movimientos.add(new Movimiento(TipoMovimiento.TRANSFERENCIA_ENVIADA, m));
         destino.movimientos.add(new Movimiento(TipoMovimiento.TRANSFERENCIA_RECIBIDA, m));
+    }
+
+    public void cerrar() {
+        validarAbierta();
+        if (saldo.compareTo(BigDecimal.ZERO) != 0) {
+            throw new IllegalStateException("No puedes cerrar una cuenta con saldo: $" + saldo);
+        }
+        cerrada = true;
     }
 
     /** Comisión del retiro número {@code numeroDeRetiro} (el primero es el 1). */
@@ -98,6 +115,16 @@ public class CuentaBancaria {
 
     public List<Movimiento> getMovimientos() {
         return List.copyOf(movimientos);
+    }
+
+    public boolean estaCerrada() {
+        return cerrada;
+    }
+
+    private void validarAbierta() {
+        if (cerrada) {
+            throw new CuentaCerradaException(titular);
+        }
     }
 
     private static BigDecimal validarMonto(BigDecimal monto) {
