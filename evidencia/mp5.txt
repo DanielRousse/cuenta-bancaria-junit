@@ -1,0 +1,79 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.academia:cuenta-bancaria-junit >-----------------
+[INFO] Building cuenta-bancaria-junit 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ cuenta-bancaria-junit ---
+[INFO] skip non existing resourceDirectory /home/lenovo/cuenta-bancaria-junit/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ cuenta-bancaria-junit ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ cuenta-bancaria-junit ---
+[INFO] skip non existing resourceDirectory /home/lenovo/cuenta-bancaria-junit/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ cuenta-bancaria-junit ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ cuenta-bancaria-junit ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] +--Cuando la transferencia se rechaza - 0.073 s
+[INFO] |  +-- [OK] sin saldo suficiente, ninguna de las dos cuentas cambia - 0.046 s
+[INFO] |  +-- [OK] la cuenta destino es obligatoria - 0.003 s
+[INFO] |  +-- [OK] no se puede transferir a la misma cuenta - 0.003 s
+[INFO] |  '-- [OK] el monto debe ser mayor que cero - 0.004 s
+[INFO] +--Cuando la transferencia procede - 0.040 s
+[INFO] |  +-- [OK] queda en el historial de las dos cuentas - 0.027 s
+[INFO] |  +-- [OK] el dinero sale de una cuenta y llega a la otra - 0.002 s
+[INFO] |  '-- [OK] no cobra comisión ni cuenta como retiro - 0.004 s
+[INFO] +--com.academia.banco.DepositoTest - 0.011 s
+[INFO] |  +-- [OK] depositarSumaAlSaldo - 0.002 s
+[INFO] |  '-- [OK] unaCuentaNuevaEmpiezaEnCero - 0.002 s
+[INFO] +--com.academia.banco.RetiroTest - 0.033 s
+[INFO] |  +-- [OK] unMontoConFraccionDeCentavoSeRechaza - 0.005 s
+[INFO] |  +-- [OK] retirarCeroSeRechaza - 0.002 s
+[INFO] |  +-- [OK] retirarRestaDelSaldo - 0.002 s
+[INFO] |  +-- [OK] sinSaldoSuficienteSeRechazaYNoCambiaNada - 0.002 s
+[INFO] |  +-- [OK] retirarExactamenteElLimiteSePermite - 0.001 s
+[INFO] |  +-- [OK] retirarUnCentavoMasDelLimiteSeRechaza - 0.003 s
+[INFO] |  +-- [OK] retirarUnMontoNegativoSeRechaza - 0.004 s
+[INFO] |  '-- [OK] elMensajeDiceCuantoTienesYCuantoNecesitas - 0.002 s
+[INFO] +--Interés mensual - 0.099 s
+[INFO] |  +-- [OK] un saldo negativo es un error - 0.003 s
+[INFO] |  +-- [OK] calculaSegunLaTabla(BigDecimal, BigDecimal) saldo $0.00 → interés $0.00 - 0.012 s
+[INFO] |  +-- [OK] calculaSegunLaTabla(BigDecimal, BigDecimal) saldo $1000.00 → interés $5.00 - 0.001 s
+[INFO] |  +-- [OK] calculaSegunLaTabla(BigDecimal, BigDecimal) saldo $50000.00 → interés $500.00 - 0.001 s
+[INFO] |  +-- [OK] calculaSegunLaTabla(BigDecimal, BigDecimal) saldo $999.99 → interés $0.00 - 0.001 s
+[INFO] |  +-- [OK] calculaSegunLaTabla(BigDecimal, BigDecimal) saldo $1234.56 → interés $6.17 - 0.001 s
+[INFO] |  +-- [OK] calculaSegunLaTabla(BigDecimal, BigDecimal) saldo $49999.99 → interés $250.00 - 0.003 s
+[INFO] |  '-- [OK] calculaSegunLaTabla(BigDecimal, BigDecimal) saldo $123456.78 → interés $1234.57 - 0.001 s
+[INFO] +--Comisión por retiro - 0.025 s
+[INFO] |  +-- [OK] calculaSegunElNumeroDeRetiro(int, BigDecimal) retiro 1 → comisión $0.00 - 0.002 s
+[INFO] |  +-- [OK] calculaSegunElNumeroDeRetiro(int, BigDecimal) retiro 3 → comisión $0.00 - 0.002 s
+[INFO] |  +-- [OK] calculaSegunElNumeroDeRetiro(int, BigDecimal) retiro 4 → comisión $10.00 - 0.001 s
+[INFO] |  +-- [OK] calculaSegunElNumeroDeRetiro(int, BigDecimal) retiro 100 → comisión $10.00 - 0.001 s
+[INFO] |  +-- [OK] numerosDeRetiroInvalidosSeRechazan(int) retiro 0 inválido se rechaza - 0.002 s
+[INFO] |  '-- [OK] numerosDeRetiroInvalidosSeRechazan(int) retiro -1 inválido se rechaza - 0.001 s
+[INFO] +--Quejas de clientes (cada una reproducida con una prueba) - 0.018 s
+[INFO] |  +-- [OK] Queja 2: se pueden retirar exactamente $5,000.00 - 0.003 s
+[INFO] |  +-- [OK] Queja 5: nadie puede borrar movimientos desde fuera - 0.002 s
+[INFO] |  +-- [OK] Queja 1: el 3.er retiro no cobra comisión - 0.002 s
+[INFO] |  +-- [OK] Queja 4: la comisión aparece en el historial - 0.001 s
+[INFO] |  '-- [OK] Queja 3: una transferencia rechazada no toca el saldo de origen - 0.002 s
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 36, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.577 s
+[INFO] Finished at: 2026-09-30T13:56:11-06:00
+[INFO] ------------------------------------------------------------------------
