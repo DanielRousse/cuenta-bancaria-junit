@@ -1,0 +1,138 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.academia:cuenta-bancaria-junit >-----------------
+[INFO] Building cuenta-bancaria-junit 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ cuenta-bancaria-junit ---
+[INFO] skip non existing resourceDirectory /home/lenovo/cuenta-bancaria-junit/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ cuenta-bancaria-junit ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ cuenta-bancaria-junit ---
+[INFO] skip non existing resourceDirectory /home/lenovo/cuenta-bancaria-junit/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ cuenta-bancaria-junit ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ cuenta-bancaria-junit ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] +--Cuando la transferencia se rechaza - 0.080 s
+[INFO] |  +-- [OK] sin saldo suficiente, ninguna de las dos cuentas cambia - 0.048 s
+[INFO] |  +-- [OK] la cuenta destino es obligatoria - 0.005 s
+[INFO] |  +-- [OK] no se puede transferir a la misma cuenta - 0.002 s
+[INFO] |  '-- [OK] el monto debe ser mayor que cero - 0.001 s
+[INFO] +--Cuando la transferencia procede - 0.039 s
+[INFO] |  +-- [OK] queda en el historial de las dos cuentas - 0.028 s
+[INFO] |  +-- [OK] el dinero sale de una cuenta y llega a la otra - 0.002 s
+[INFO] |  '-- [OK] no cobra comisión ni cuenta como retiro - 0.003 s
+[INFO] +--com.academia.banco.DepositoTest - 0.010 s
+[INFO] |  +-- [OK] depositarSumaAlSaldo - 0.002 s
+[INFO] |  '-- [OK] unaCuentaNuevaEmpiezaEnCero - 0.002 s
+[INFO] +--com.academia.banco.RetiroTest - 0.037 s
+[INFO] |  +-- [OK] unMontoConFraccionDeCentavoSeRechaza - 0.003 s
+[INFO] |  +-- [OK] retirarCeroSeRechaza - 0.004 s
+[INFO] |  +-- [OK] retirarRestaDelSaldo - 0.002 s
+[INFO] |  +-- [OK] sinSaldoSuficienteSeRechazaYNoCambiaNada - 0.002 s
+[INFO] |  +-- [OK] retirarExactamenteElLimiteSePermite - 0.001 s
+[INFO] |  +-- [OK] retirarUnCentavoMasDelLimiteSeRechaza - 0.005 s
+[INFO] |  +-- [OK] retirarUnMontoNegativoSeRechaza - 0.003 s
+[INFO] |  '-- [OK] elMensajeDiceCuantoTienesYCuantoNecesitas - 0.003 s
+[INFO] +--Interés mensual - 0.131 s
+[INFO] |  +-- [OK] un saldo negativo es un error - 0.004 s
+[INFO] |  +-- [OK] calculaSegunLaTabla(BigDecimal, BigDecimal) saldo $0.00 → interés $0.00 - 0.023 s
+[INFO] |  +-- [XX] calculaSegunLaTabla(BigDecimal, BigDecimal) saldo $1000.00 → interés $5.00 - 0.008 s
+[INFO] |  +-- [OK] calculaSegunLaTabla(BigDecimal, BigDecimal) saldo $50000.00 → interés $500.00 - 0.002 s
+[INFO] |  +-- [OK] calculaSegunLaTabla(BigDecimal, BigDecimal) saldo $999.99 → interés $0.00 - 0.002 s
+[INFO] |  +-- [OK] calculaSegunLaTabla(BigDecimal, BigDecimal) saldo $1234.56 → interés $6.17 - 0.003 s
+[INFO] |  +-- [OK] calculaSegunLaTabla(BigDecimal, BigDecimal) saldo $49999.99 → interés $250.00 - 0.002 s
+[INFO] |  '-- [OK] calculaSegunLaTabla(BigDecimal, BigDecimal) saldo $123456.78 → interés $1234.57 - 0.002 s
+[INFO] +--Comisión por retiro - 0.041 s
+[INFO] |  +-- [OK] calculaSegunElNumeroDeRetiro(int, BigDecimal) retiro 1 → comisión $0.00 - 0.003 s
+[INFO] |  +-- [OK] calculaSegunElNumeroDeRetiro(int, BigDecimal) retiro 3 → comisión $0.00 - 0.002 s
+[INFO] |  +-- [OK] calculaSegunElNumeroDeRetiro(int, BigDecimal) retiro 4 → comisión $10.00 - 0.002 s
+[INFO] |  +-- [OK] calculaSegunElNumeroDeRetiro(int, BigDecimal) retiro 100 → comisión $10.00 - 0.002 s
+[INFO] |  +-- [OK] numerosDeRetiroInvalidosSeRechazan(int) retiro 0 inválido se rechaza - 0.003 s
+[INFO] |  '-- [OK] numerosDeRetiroInvalidosSeRechazan(int) retiro -1 inválido se rechaza - 0.001 s
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   InteresTest.calculaSegunLaTabla:27 expected: <5.00> but was: <0.00>
+[INFO] 
+[ERROR] Tests run: 31, Failures: 1, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.627 s
+[INFO] Finished at: 2026-09-30T13:27:44-06:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.6:test (default-test) on project cuenta-bancaria-junit: There are test failures.
+[ERROR] 
+[ERROR] See /home/lenovo/cuenta-bancaria-junit/target/surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+===== DETALLE de cada clase con fallas (target/surefire-reports) =====
+-------------------------------------------------------------------------------
+Test set: com.academia.banco.InteresTest
+-------------------------------------------------------------------------------
+Tests run: 8, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.131 s <<< FAILURE! -- in com.academia.banco.InteresTest
+com.academia.banco.InteresTest.unSaldoNegativoEsUnError -- Time elapsed: 0.004 s
+com.academia.banco.InteresTest.calculaSegunLaTabla(BigDecimal, BigDecimal)[1] -- Time elapsed: 0.023 s
+com.academia.banco.InteresTest.calculaSegunLaTabla(BigDecimal, BigDecimal)[2] -- Time elapsed: 0.008 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <5.00> but was: <0.00>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at com.academia.banco.InteresTest.calculaSegunLaTabla(InteresTest.java:27)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.Optional.ifPresent(Optional.java:178)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1625)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:762)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1625)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:276)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1625)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.academia.banco.InteresTest.calculaSegunLaTabla(BigDecimal, BigDecimal)[3] -- Time elapsed: 0.002 s
+com.academia.banco.InteresTest.calculaSegunLaTabla(BigDecimal, BigDecimal)[4] -- Time elapsed: 0.002 s
+com.academia.banco.InteresTest.calculaSegunLaTabla(BigDecimal, BigDecimal)[5] -- Time elapsed: 0.003 s
+com.academia.banco.InteresTest.calculaSegunLaTabla(BigDecimal, BigDecimal)[6] -- Time elapsed: 0.002 s
+com.academia.banco.InteresTest.calculaSegunLaTabla(BigDecimal, BigDecimal)[7] -- Time elapsed: 0.002 s
